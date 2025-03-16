@@ -1,6 +1,7 @@
 class Character extends MovableObject {
     height= 280;
     y = 155;
+    speed = 5;
     IMAGES_WALKING = [
         "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-21.png",
         "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-22.png",
@@ -9,6 +10,7 @@ class Character extends MovableObject {
         "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-25.png",
         "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-26.png",
     ];
+    world;
 
     constructor() {
         super();
@@ -19,12 +21,28 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.ImageCache[path];
-            this.currentImage++;
+            if (this.world.keyboard.RIGHT) {
+                this.x += this.speed;
+                this.otherDirection = false;
+            }
+            if (this.world.keyboard.LEFT) {
+                this.x -= this.speed;
+                this.otherDirection = true;
+            }    
+            this.world.camera_x = -this.x +20.5;        
+        }, 1000 / 60);
+
+        setInterval(() => {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                let i = this.currentImage % this.IMAGES_WALKING.length;
+                let path = this.IMAGES_WALKING[i];
+                this.img = this.ImageCache[path];
+                this.currentImage++;
+            }
         }, 1000 / 10);
     }
+
+    
 
     jump() {
         // Jump logic here
