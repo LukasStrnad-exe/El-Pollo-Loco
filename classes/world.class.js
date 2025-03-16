@@ -1,8 +1,6 @@
 class World{
     character = new Character();
-    enemies = level1.enemies;
-    clouds = level1.clouds;
-    backgroundObjects = level1.backgroundObjects;
+    level = level1;
     canvas;
     ctx;
     keyboard;
@@ -25,17 +23,9 @@ class World{
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
 
-        this.backgroundObjects.forEach(bgo => {
-            this.addToMap(bgo);  
-        });
-
-        this.enemies.forEach(enemy => {
-            this.addToMap(enemy);
-        });
-
-        this.clouds.forEach(cloud => {
-            this.addToMap(cloud);
-        });
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.clouds);
 
         this.addToMap(this.character);
 
@@ -44,6 +34,12 @@ class World{
         let self = this; 
         requestAnimationFrame(function(){
             self.draw();});
+    }
+
+    addObjectsToMap(objects) {
+        objects.forEach(obj => {
+            this.addToMap(obj);
+        });
     }
 
     addToMap(mo) {
