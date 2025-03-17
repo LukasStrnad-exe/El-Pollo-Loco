@@ -9,7 +9,9 @@ class MovableObject {
     speed = 0.2;
     otherDirection = false;
     speedY = 0;
-    acceleration = 2;   
+    acceleration = 2;
+    energy = 100;
+    lastHit = 0;
 
     apllyGravity() {
         setInterval(() => {
@@ -37,6 +39,46 @@ class MovableObject {
         });
     }
 
+    hit() {
+        this.energy -= 1;
+        if (this.energy <= 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed /= 1000;
+        return timepassed < 1;
+    }
+
+    isDead() {
+        return this.energy === 0;
+    }
+
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+    drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Chicken) {
+            ctx.beginPath();
+            ctx.lineWidth = "2";
+            ctx.strokeStyle = "red";
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+
+    isColliding (obj) {
+        return (this.x + this.width) >= obj.x &&
+               this.x <= (obj.x + obj.width) &&
+               (this.y + this.height) >= obj.y &&
+               this.y <= (obj.y + obj.height);
+    }
+
     moveRight() {
         this.x += this.speed;
     }
@@ -50,7 +92,7 @@ class MovableObject {
     }
 
     playAnimation(images) {
-        let i = this.currentImage % this.IMAGES_WALKING.length;
+        let i = this.currentImage % images.length;
         let path =images[i];
         this.img = this.ImageCache[path];
         this.currentImage++;
