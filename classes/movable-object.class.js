@@ -1,11 +1,4 @@
-class MovableObject {
-    x = 20;
-    y = 280;
-    img;
-    height = 150;
-    width = 100;
-    ImageCache = {};
-    currentImage = 0;
+class MovableObject extends DrawableObject{
     speed = 0.2;
     otherDirection = false;
     speedY = 0;
@@ -26,19 +19,6 @@ class MovableObject {
         return this.y < 180;
     }
 
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.ImageCache[path] = img;
-        });
-    }
-
     hit() {
         this.energy -= 1;
         if (this.energy <= 0) {
@@ -56,20 +36,6 @@ class MovableObject {
 
     isDead() {
         return this.energy === 0;
-    }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
-
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = "2";
-            ctx.strokeStyle = "red";
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
     }
 
     isColliding (obj) {
