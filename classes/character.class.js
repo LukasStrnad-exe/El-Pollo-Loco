@@ -96,4 +96,8 @@ class Character extends MovableObject {
             }
         }, 1000 / 10);
     }
+
+    isAboveEnemy(enemy) {
+        return this.y + this.height < enemy.y + enemy.height && this.speedY < 0;
+    }
 }
