@@ -2,6 +2,20 @@ class Character extends MovableObject {
     height= 250;
     y = 80;
     speed = 5;
+
+    IMAGES_IDLE = [
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-1.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-2.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-3.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-4.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-5.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-6.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-7.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-8.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-9.png",
+        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-10.png",
+    ];
+
     IMAGES_WALKING = [
         "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-21.png",
         "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-22.png",
@@ -42,7 +56,8 @@ class Character extends MovableObject {
 
     constructor() {
         super();
-        this.loadImage("../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-21.png");
+        this.loadImage("../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-1.png");
+        this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_DEAD);
@@ -72,14 +87,13 @@ class Character extends MovableObject {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if(this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
-            }
-            else if (this.isAboveGround()) {
+            } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
-            } else{
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                     this.playAnimation(this.IMAGES_WALKING);
-                }
+            } else {
+                this.playAnimation(this.IMAGES_IDLE);
             }
-        }, 50);
+        }, 1000 / 10);
     }
 }
