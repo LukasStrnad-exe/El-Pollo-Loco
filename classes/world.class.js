@@ -45,7 +45,7 @@ class World{
     }
 
     handleEnemyCollision(enemy) {
-        if (this.character.isAboveEnemy(enemy) && enemy.energy !== 0) {
+        if (this.character.isAboveEnemy(enemy) && enemy.energy !== 0 && enemy instanceof Chicken) {
             this.character.jump();
             this.killEnemy(enemy);
         } else if (enemy.energy !== 0) {
@@ -56,7 +56,17 @@ class World{
     killEnemy(enemy) {
         enemy.energy = 0;
         enemy.speed = 0;
+        setTimeout(() => {
+            this.removeEnemy(enemy)
+        }, 300);
     } 
+
+    removeEnemy(enemy) {
+        let indexToRemove = this.level.enemies.indexOf(enemy);
+        if (indexToRemove !== -1) {
+            this.level.enemies.splice(indexToRemove, 1);
+        }
+    }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
