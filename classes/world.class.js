@@ -47,7 +47,7 @@ class World{
     }
 
     handleEnemyCollision(enemy) {
-        if (this.character.isAboveEnemy(enemy) && enemy.energy !== 0 && enemy instanceof Chicken) {
+        if (this.character.isAboveEnemy(enemy) && enemy.energy !== 0 && enemy instanceof Chicken || enemy instanceof TinyChicken) {
             this.character.jump();
             this.killEnemy(enemy);
         } else if (enemy.energy !== 0) {
