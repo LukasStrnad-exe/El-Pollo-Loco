@@ -5,10 +5,10 @@ class World{
     ctx;
     keyboard;
     camera_x = 0;
+    throwableObjects = [];
     healthBar = new HealthBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
-    throwableObjects = [];
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext("2d");
@@ -26,6 +26,7 @@ class World{
     run(){
         setInterval(() => {
             this.checkCollisions();
+            this.checkItemCollisions();
             this.checkThrowObjects();
         }, 1000 / 60);
     }
@@ -46,8 +47,17 @@ class World{
             });
     }
 
+    checkItemCollisions(){
+        this.level.items.forEach(item => {
+            if (this.character.isColliding(item)) {
+                this.handleItemCollision(item);
+                this.coinBar.setPercentage(this.coinBar.percentage);
+            }
+        });
+}
+
     handleEnemyCollision(enemy) {
-        if (this.character.isAboveEnemy(enemy) && enemy.energy !== 0 && enemy instanceof Chicken || enemy instanceof TinyChicken) {
+        if (this.character.isAboveEnemy(enemy) && enemy.energy !== 0 && enemy instanceof Chicken || this.character.isAboveEnemy(enemy) && enemy instanceof TinyChicken) {
             this.character.jump();
             this.killEnemy(enemy);
         } else if (enemy.energy !== 0) {
@@ -70,6 +80,17 @@ class World{
         }
     }
 
+    handleItemCollision(item){
+        if (item instanceof Coin) {
+            this.coinBar.percentage += 20;
+            console.log(this.coinBar.percentage);
+        }
+        let indexToRemove = this.level.items.indexOf(item);
+        if (indexToRemove !== -1) {
+            this.level.items.splice(indexToRemove, 1);
+        }
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
@@ -78,6 +99,7 @@ class World{
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.throwableObjects);
+        this.addObjectsToMap(this.level.items);
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
@@ -93,9 +115,14 @@ class World{
     }
 
     addObjectsToMap(objects) {
-        objects.forEach(obj => {
-            this.addToMap(obj);
-        });
+        try {
+            objects.forEach(obj => {
+                this.addToMap(obj);
+            });
+        } catch (error) {
+            console.log(objects); 
+            console.log(error);
+        }
     }
 
     addToMap(mo) {
