@@ -9,12 +9,12 @@ class BottleBar extends StatusBar {
 
     ];
 
-    percentage = 50;
+    percentage = 0;
     constructor() {
         super();
         this.loadImages(this.IMAGES);
         this.x= 20;
         this.y = 80;
-        this.setPercentage(50);
+        this.setPercentage(0);
     }
 }
