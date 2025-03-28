@@ -9,8 +9,8 @@ class World{
     healthBar = new HealthBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
+    endbossBar= new EndbossBar();
     lastBottle = 0;
-
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext("2d");
         this.canvas = canvas;
@@ -31,8 +31,9 @@ class World{
             this.checkThrowObjects();
             this.level.enemies.forEach(enemy => {
             this.checkObjectsCollisions(enemy);
+            this.checkFirstContact(enemy);
             });
-        }, 1000 / 60);
+            }, 1000 / 60);
     }
 
     checkThrowObjects(){
@@ -67,9 +68,24 @@ class World{
                     this.killEnemy(enemy);
                     bottle.splashAnimation();
                 }
+                if (enemy instanceof Endboss) {
+                    let numberEndboss = this.level.enemies.indexOf(enemy);
+                    let endboss =this.level.enemies[numberEndboss];
+                    endboss.endbossHurt();
+                    this.endbossBar.setPercentage(endboss.energy);
+                    bottle.splashAnimation();
+                }
             }
         });
     }
+
+    checkFirstContact(enemy) {
+        if (!(enemy instanceof Endboss)) return; // Ensure it's the Endboss
+    
+        if (this.character.x > 1600 && !enemy.hadFirstContact) {
+            enemy.hadFirstContact = true;
+        }
+    }    
 
     checkItemCollisions(){
         this.level.items.forEach(item => {
@@ -86,7 +102,7 @@ class World{
             this.character.jump();
             this.killEnemy(enemy);
         } else if (enemy.energy !== 0) {
-            this.character.hit();
+            this.character.hit(1);
         }
     }
 
@@ -130,6 +146,7 @@ class World{
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
+        this.addToMap(this.endbossBar);
         this.addToMap(this.coinBar);
         this.addToMap(this.bottleBar);
         this.ctx.translate(this.camera_x, 0);
