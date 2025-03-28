@@ -5,14 +5,20 @@ class Cloud extends MovableObject {
 
     constructor() {
         super();
-        this.loadImage("../El-Pollo-Loco/assets/img/5_background/layers/4_clouds/1.png");
-        this.x =Math.random() * 500;
+        if (Cloud.cloudCreated % 2 === 0) {
+            this.loadImage("../El-Pollo-Loco/assets/img/5_background/layers/4_clouds/1.png");
+        } else {
+            this.loadImage("../El-Pollo-Loco/assets/img/5_background/layers/4_clouds/2.png");
+        }
+        Cloud.cloudCreated++;
+        this.x =Math.random() * 2500;
         this.animate();
+        this.speed = 0.5;
     }
 
     animate() {
-        this.moveLeft();
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 60);
     }
-
-
 }
