@@ -32,6 +32,7 @@ class World{
             this.level.enemies.forEach(enemy => {
             this.checkObjectsCollisions(enemy);
             this.checkFirstContact(enemy);
+            this.checkSpeedEndboss(enemy);
             });
             }, 1000 / 60);
     }
@@ -61,6 +62,16 @@ class World{
             });
     }
 
+    checkSpeedEndboss(enemy){
+        if (enemy instanceof Endboss) {
+            if (!this.character.isColliding(enemy) && enemy.hadFirstContact === true) {
+                enemy.speed = 4;
+            } else {
+                enemy.speed = 0;
+            }
+        }
+    }
+
     checkObjectsCollisions(enemy) {
         this.throwableObjects.forEach((bottle, index) => {
             if (enemy.isColliding(bottle) && !bottle.isSplash()) {
@@ -80,10 +91,10 @@ class World{
     }
 
     checkFirstContact(enemy) {
-        if (!(enemy instanceof Endboss)) return; // Ensure it's the Endboss
+        if (!(enemy instanceof Endboss)) return;
     
         if (this.character.x > 1600 && !enemy.hadFirstContact) {
-            enemy.hadFirstContact = true;
+            enemy.endbossFistContact();
         }
     }    
 
@@ -103,6 +114,10 @@ class World{
             this.killEnemy(enemy);
         } else if (enemy.energy !== 0) {
             this.character.hit(1);
+            if (enemy instanceof Endboss) {
+                enemy.attack = true;
+                console.log('is attack');
+            }
         }
     }
 

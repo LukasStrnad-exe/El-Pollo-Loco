@@ -15,7 +15,7 @@ class TinyChicken extends MovableObject {
     
     constructor() {
         super();
-        this.loadImage("../El-Pollo-Loco/assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png");
+        this.loadImage("../El Pollo Loco/assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png");
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
 
