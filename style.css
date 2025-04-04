@@ -1,10 +1,189 @@
+@font-face {
+    font-family: 'zabras';
+    src: url(assets/fonts/zabars.ttf) format('truetype');
+ }
+
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(assets/img/5_background/bg_desert.png);
+    background-position: center;
+    font-family: 'zabras', Arial, Helvetica, sans-serif ;
 }
 
 canvas {
     background-color: black;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    }
+
+
+a:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+h1 {
+    font-size: 64px;
+    letter-spacing: 3px;
+}
+
+footer{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 20px;
+}
+
+footer p:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fullscreen{
+    position: relative;
+}
+
+.bg_startscreen{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.startscreen_buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    gap: 10px;
+}
+
+.startscreen_buttons img{
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.startscreen_buttons img:hover{
+    transform: scale(1.05);
+}
+
+.startscreen{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-direction: column;
+}
+
+.game_description{
+    z-index: 2;
+}
+
+.description{
+    z-index: 3;
+    font-size: 24px;
+    width: 75%;
+    height: 100%;
+    margin-top: 70px;
+}
+
+.arrow-up {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    rotate: 270deg;
+}
+
+.arrow-left {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+}
+
+.arrow-right {
+    height: 20px;
+    width: 20px;
+    rotate: 180deg;
+    vertical-align: middle;
+}
+
+.close_button{
+    cursor: pointer;
+    margin-right: 10%;
+}
+
+.close_button img{
+    width: 30px;
+}
+
+.menueFieldClose{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dNone{
+    display: none;
+}
+
+.impressum{
+    z-index: 3;
+    font-size: 24px;
+    color: white;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.impressum_text{
+    overflow-y: auto;
+    scrollbar-width: none;
+    max-height: 300px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.impressum_headline{
+    margin-left: 10%;
+}
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
 }

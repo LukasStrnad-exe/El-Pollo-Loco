@@ -28,11 +28,90 @@
     <script src="classes/throwable-object.class.js" defer></script>
     <script src="levels/level1.js" defer></script>
     <script src="js/game.js" defer></script>
+    <script src="js/template.js" defer></script>
   </head>
-  <body onload="init()">
-
+  <body>
     <h1>El Pollo Loco</h1>
-
-    <canvas id="canvas" width="720px" height="480"></canvas>
+    <div class="fullscreen">
+      <canvas id="canvas" width="720px" height="480"></canvas>
+      <!-- start startscreen -->
+      <div class="startscreen" id="startScreen">
+        <div class="startscreen_buttons">
+          <div class="home_button" onclick="toggleDnone('gameDescription')">
+            <img src="assets/img/startscreen/start_Homebutton.png" alt="Home" />
+          </div>
+          <div class="start_button" onclick="init()">
+            <img
+              src="assets/img/startscreen/start_button.png"
+              alt="Start Game"
+            />
+          </div>
+        </div>
+        <img
+          class="bg_startscreen"
+          src="assets/img/9_intro_outro_screens/start/startscreen_1.png"
+          alt="startscreen"
+        />
+        <footer>
+          <p
+            onclick="toggleDnone('impressum'), renderFooterSides('impressum') "
+          >
+            Imprint
+          </p>
+          <p
+            onclick="toggleDnone('impressum'), renderFooterSides('Datenschutz') "
+          >
+            Privacy
+          </p>
+        </footer>
+      </div>
+      <!-- end startscreen -->
+      <!-- begin description -->
+      <div class="game_description startscreen dNone" id="gameDescription">
+        <div class="description">
+          <div class="menueFieldClose">
+            <h4>Spielinfo El Pollo Loco :</h4>
+            <div class="close_button" onclick="toggleDnone('gameDescription')">
+              <img src="assets/img/startscreen/close.png" alt="" />
+            </div>
+          </div>
+          <p>
+            <li>
+              Nutze die Pfeiltasten
+              <img
+                class="arrow-right"
+                src="assets/img/startscreen/rechter-pfeil.png"
+                alt=""
+              />
+              <img
+                class="arrow-left"
+                src="assets/img/startscreen/rechter-pfeil.png"
+                alt=""
+              />
+              um dich zu bewegen.
+            </li>
+            <li>
+              Springe mit der Pfeiltaste
+              <img
+                class="arrow-up"
+                src="assets/img/startscreen/rechter-pfeil.png"
+                alt=""
+              />
+            </li>
+            <li>
+              Werfe die eingesammelten Chili Flaschen mit der Taste <b>D</b>
+            </li>
+            <li>Sammle Münzen, um die Münzleiste zu füllen</li>
+          </p>
+        </div>
+        <img
+          class="bg_startscreen"
+          src="assets/img/startscreen/game_description_bg.png"
+          alt="game description"
+        />
+      </div>
+      <!-- end description -->
+      <div class="game_description startscreen dNone" id="impressum"></div>
+    </div>
   </body>
 </html>

@@ -1,5 +1,6 @@
 class ThrowableObject extends MovableObject {
     splash = false;
+    direction;
 
     IMAGE_ROTATE = [
         "../El Pollo Loco/assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
@@ -33,9 +34,10 @@ class ThrowableObject extends MovableObject {
     throw () {
         this.speedY = 30;
         this.apllyGravity();
+        this.direction = world.character.otherDirection ? -10 : 10;
         this.throwInterval = setInterval(() => {
             if (!this.isSplash()) {
-            this.x += 10;
+            this.x += this.direction;
             }
         }, 1000 / 60);
     }

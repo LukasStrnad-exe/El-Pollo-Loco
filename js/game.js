@@ -5,6 +5,15 @@ let keyboard = new Keyboard();
 function init() {
     canvas = document.getElementById("canvas");
     world = new World(canvas,keyboard);
+    document.getElementById("startScreen").classList.toggle('dNone');
+}
+
+function toggleDnone(id) {
+    document.getElementById(id).classList.toggle('dNone');
+}
+
+function renderFooterSides(side) {
+    document.getElementById('impressum').innerHTML = side === 'impressum' ? templateImpressum() : templateDatenschutz();
 }
 
 window.addEventListener("keydown", (e) => {

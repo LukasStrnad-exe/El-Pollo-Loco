@@ -64,8 +64,8 @@ class World{
 
     checkSpeedEndboss(enemy){
         if (enemy instanceof Endboss) {
-            if (!this.character.isColliding(enemy) && enemy.hadFirstContact === true) {
-                enemy.speed = 4;
+            if (!this.character.isColliding(enemy) && enemy.hadFirstContact === true && enemy.energy > 0) {
+                enemy.speed = 3;
             } else {
                 enemy.speed = 0;
             }
@@ -116,7 +116,6 @@ class World{
             this.character.hit(1);
             if (enemy instanceof Endboss) {
                 enemy.attack = true;
-                console.log('is attack');
             }
         }
     }
