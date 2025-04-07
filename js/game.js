@@ -6,7 +6,7 @@ function init() {
     initLevel()
     canvas = document.getElementById("canvas");
     world = new World(canvas,keyboard);
-    document.getElementById("startScreen").classList.toggle('dNone');
+    document.getElementById("startScreen").innerHTML = "";
 }
 
 function toggleDnone(id) {
