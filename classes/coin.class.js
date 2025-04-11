@@ -3,6 +3,7 @@ class Coin extends MovableObject {
     IMAGES = [
         "../El Pollo Loco/assets/img/8_coin/coin_1.png",
         "../El Pollo Loco/assets/img/8_coin/coin_2.png",
+        
 
     ];
     constructor() {

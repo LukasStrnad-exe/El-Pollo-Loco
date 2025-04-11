@@ -11,6 +11,9 @@ class World{
     bottleBar = new BottleBar();
     endbossBar= new EndbossBar();
     lastBottle = 0;
+    gameInterval;
+    gameRunning = true;
+
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext("2d");
         this.canvas = canvas;
@@ -25,7 +28,7 @@ class World{
     }
 
     run(){
-        setInterval(() => {
+        this.gameInterval = setInterval(() => {
             this.checkEnemyCollisions();
             this.checkItemCollisions();
             this.checkThrowObjects();
@@ -33,6 +36,7 @@ class World{
             this.checkObjectsCollisions(enemy);
             this.checkFirstContact(enemy);
             this.checkSpeedEndboss(enemy);
+            this.checkFinishGame(enemy);
             });
             }, 1000 / 60);
     }
@@ -70,6 +74,31 @@ class World{
                 enemy.speed = 0;
             }
         }
+    }
+
+    checkFinishGame(enemy) {   
+        if (enemy instanceof Endboss && enemy.energy === 0) {
+            setTimeout(() => {
+                this.winGame();
+            }, 1000);
+        }
+        if (this.character.energy === 0) {
+            setTimeout(() => {
+                this.gameOver();
+            }, 1000);
+        }
+    }
+
+    gameOver() {
+        clearInterval(this.gameInterval); // Stop the game loop
+        document.getElementById('gameOverScreen').classList.remove('dNone');
+        this.gameRunning = false;
+    }
+
+    winGame() {
+        clearInterval(this.gameInterval); // Stop the game loop
+        document.getElementById('winScreen').classList.remove('dNone');
+        this.gameRunning = false;
     }
 
     checkObjectsCollisions(enemy) {
@@ -149,6 +178,8 @@ class World{
     }
 
     draw() {
+        if (!this.gameRunning) return;
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
 

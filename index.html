@@ -32,10 +32,10 @@
   </head>
   <body>
     <h1>El Pollo Loco</h1>
-    <div class="fullscreen">
+    <div class="container">
       <canvas id="canvas" width="720px" height="480"></canvas>
       <!-- start startscreen -->
-      <div class="startscreen" id="startScreen" onclick="openFullscreen()">
+      <div class="startscreen" id="startScreen">
         <div class="startscreen_buttons">
           <div class="home_button" onclick="toggleDnone('gameDescription')">
             <img src="assets/img/startscreen/start_Homebutton.png" alt="Home" />
@@ -111,7 +111,11 @@
         />
       </div>
       <!-- end description -->
+      <!-- begin Impressum || begin privacy Policy -->
       <div class="game_description startscreen dNone" id="impressum"></div>
+      <!-- end Impressum || privacy Policy -->
+       <div class="game_over dNone" id="gameOverScreen"></div>
+       <div class="win_game dNone" id="winScreen"></div>
     </div>
   </body>
 </html>
