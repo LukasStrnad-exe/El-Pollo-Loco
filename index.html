@@ -26,11 +26,12 @@
     <script src="classes/level.class.js" defer></script>
     <script src="classes/endboss.class.js" defer></script>
     <script src="classes/throwable-object.class.js" defer></script>
+    <script src="classes/audio.class.js" defer></script>
     <script src="levels/level1.js" defer></script>
     <script src="js/game.js" defer></script>
     <script src="js/template.js" defer></script>
   </head>
-  <body>
+    <body onload="playMusic()">
     <h1>El Pollo Loco</h1>
     <div class="container">
       <canvas id="canvas" width="720px" height="480"></canvas>
@@ -46,6 +47,12 @@
               alt="Start Game"
             />
           </div>
+        </div>
+        <div class="muteButton" id="muteButton" onclick="playMusic()">
+          <img src="assets/img/startscreen/mute.png" alt="unmute">
+        </div>
+        <div class="muteButton dNone" id="unmuteButton" onclick="playMusic()">
+          <img src="assets/img/startscreen/unmute.png" alt="unmute">
         </div>
         <img
           class="bg_startscreen"
@@ -114,8 +121,26 @@
       <!-- begin Impressum || begin privacy Policy -->
       <div class="game_description startscreen dNone" id="impressum"></div>
       <!-- end Impressum || privacy Policy -->
-       <div class="game_over dNone" id="gameOverScreen"></div>
-       <div class="win_game dNone" id="winScreen"></div>
+      <div class="game_over dNone" id="gameOverScreen">
+        <div class="game_over_buttons">
+          <div onclick="restartGame()" class="restart_button">
+            Restart
+          </div>
+          <div onclick="homeScreen()" class="restart_button">
+            Home
+          </div>
+        </div>
+      </div>
+       <div class="win_game dNone" id="winScreen">
+        <div class="game_over_buttons">
+          <div onclick="restartGame()" class="restart_button">
+            Restart
+          </div>
+          <div onclick="homeScreen()" class="restart_button">
+            Home
+          </div>
+        </div>
+       </div>
     </div>
   </body>
 </html>

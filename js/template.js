@@ -93,3 +93,42 @@ function templateDatenschutz() {
         />
     `;
 }
+
+function templateStartScreen() {
+  return `
+    <div class="startscreen_buttons">
+      <div class="home_button" onclick="toggleDnone('gameDescription')">
+        <img src="assets/img/startscreen/start_Homebutton.png" alt="Home" />
+      </div>
+      <div class="start_button" onclick="init()">
+        <img
+          src="assets/img/startscreen/start_button.png"
+          alt="Start Game"
+        />
+      </div>
+    </div>
+    <div class="muteButton" id="muteButton" onclick="playMusic()">
+      <img src="assets/img/startscreen/mute.png" alt="unmute">
+    </div>
+    <div class="muteButton" id="unmuteButton" onclick="playMusic()">
+      <img src="assets/img/startscreen/unmute.png" alt="unmute">
+    </div>
+    <img
+      class="bg_startscreen"
+      src="assets/img/9_intro_outro_screens/start/startscreen_1.png"
+      alt="startscreen"
+    />
+    <footer>
+      <p
+        onclick="toggleDnone('impressum'), renderFooterSides('impressum') "
+      >
+        Imprint
+      </p>
+      <p
+        onclick="toggleDnone('impressum'), renderFooterSides('Datenschutz') "
+      >
+        Privacy
+      </p>
+    </footer>
+  `;
+}

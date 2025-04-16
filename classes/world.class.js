@@ -10,6 +10,7 @@ class World{
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     endbossBar= new EndbossBar();
+    soundManager = new Sounds();
     lastBottle = 0;
     gameInterval;
     gameRunning = true;
@@ -90,14 +91,16 @@ class World{
     }
 
     gameOver() {
-        clearInterval(this.gameInterval); // Stop the game loop
+        clearInterval(this.gameInterval);
         document.getElementById('gameOverScreen').classList.remove('dNone');
+        this.soundManager.playSound('gameOver'); 
         this.gameRunning = false;
     }
 
     winGame() {
-        clearInterval(this.gameInterval); // Stop the game loop
+        clearInterval(this.gameInterval);
         document.getElementById('winScreen').classList.remove('dNone');
+        this.soundManager.playSound('win'); 
         this.gameRunning = false;
     }
 
@@ -114,6 +117,7 @@ class World{
                     endboss.endbossHurt();
                     this.endbossBar.setPercentage(endboss.energy);
                     bottle.splashAnimation();
+                    this.soundManager.playSound('angryChicken'); 
                 }
             }
         });
@@ -131,6 +135,7 @@ class World{
         this.level.items.forEach(item => {
             if (this.character.isColliding(item)) {
                 this.handleItemCollision(item);
+                this.soundManager.playSound('collect');
                 this.bottleBar.setPercentage(this.bottleBar.percentage);
                 this.coinBar.setPercentage(this.coinBar.percentage);
             }
@@ -141,8 +146,10 @@ class World{
         if (this.character.isAboveEnemy(enemy) && enemy.energy !== 0 && enemy instanceof Chicken || this.character.isAboveEnemy(enemy) && enemy instanceof TinyChicken) {
             this.character.jump();
             this.killEnemy(enemy);
+            this.soundManager.playSound('jump');
         } else if (enemy.energy !== 0) {
             this.character.hit(1);
+            this.soundManager.playSound('hurt'); 
             if (enemy instanceof Endboss) {
                 enemy.attack = true;
             }
