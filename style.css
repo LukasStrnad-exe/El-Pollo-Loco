@@ -16,6 +16,8 @@ body {
 }
 
 canvas {
+    width: 100%;
+    max-height: 100vh;
     background-color: black;
     display: block;
 }
@@ -265,14 +267,49 @@ footer p:hover{
     width: 100%;
 }
 
-@media only screen and (max-width: 720px) {
-    canvas {
+.mobile_rotate{
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.mobile_rotate img{
+    width: 100%;
+}
+
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+    .mobile_rotate{
+        display: flex;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .container{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    h1 {
+        display: none;
+    }
+
+    .container{
         width: 100%;
     }
 }
 
-@media only screen and (max-height: 480px) {
-    canvas {
-        height: 100vh;
+@media only screen and (max-height: 627px) {
+    h1 {
+        display: none;
+    }
+
+    .container{
+        height: 100%;
     }
 }
