@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 musicAreEnabled = true;
-let music = new Audio('../El Pollo Loco/assets/audio/background_music.mp3');
+let music = new Audio('../El-Pollo-Loco/assets/audio/background_music.mp3');
 
 function init() {
     initLevel()

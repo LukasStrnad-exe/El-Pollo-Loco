@@ -4,12 +4,12 @@ class Sounds extends MovableObject {
     constructor() {
         super();
         this.sounds = {
-            jump: new Audio('../El Pollo Loco/assets/audio/jump.mp3'),
-            collect: new Audio('../El Pollo Loco/assets/audio/jump.mp3'),
-            hurt: new Audio('../El Pollo Loco/assets/audio/hurt.mp3'),
-            gameOver: new Audio('../El Pollo Loco/assets/audio/game_over.mp3'),
-            win: new Audio('../El Pollo Loco/assets/audio/win.mp3'),
-            angryChicken: new Audio('../El Pollo Loco/assets/audio/angry_chicken.mp3'),
+            jump: new Audio('../El-Pollo-Loco/assets/audio/jump.mp3'),
+            collect: new Audio('../El-Pollo-Loco/assets/audio/jump.mp3'),
+            hurt: new Audio('../El-Pollo-Loco/assets/audio/hurt.mp3'),
+            gameOver: new Audio('../El-Pollo-Loco/assets/audio/game_over.mp3'),
+            win: new Audio('../El-Pollo-Loco/assets/audio/win.mp3'),
+            angryChicken: new Audio('../El-Pollo-Loco/assets/audio/angry_chicken.mp3'),
         };
     }
 
