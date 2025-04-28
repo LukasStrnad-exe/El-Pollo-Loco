@@ -280,6 +280,46 @@ footer p:hover{
     width: 100%;
 }
 
+.button_arrow{
+    width: 75px;
+    height: 75px;  
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 100;
+    background-color: rgba(79, 79, 79, 0.404);
+    position: absolute;
+}
+
+.button_arrow_right{
+    right: 10px;
+    bottom: 10px;
+    rotate: 270deg;
+}
+
+.button_arrow_left{
+    right: 95px;
+    bottom: 10px;
+    rotate: 90deg;
+}
+
+.button_arrow_up{
+    left: 10px;
+    bottom: 10px;
+    rotate: 180deg;
+}
+
+.button_arrow img{
+    width: 80%;
+    border-radius: 50%;
+}
+
+.button_bottle{
+    left: 95px;
+    bottom: 10px;
+}
+
 @media only screen and (max-width: 800px) and (orientation: portrait) {
     .mobile_rotate{
         display: flex;
@@ -292,6 +332,10 @@ footer p:hover{
     .container{
         display: none;
     }
+
+    .button_arrow{
+        display: flex;
+    }
 }
 
 @media only screen and (max-width: 730px) {
@@ -302,6 +346,10 @@ footer p:hover{
     .container{
         width: 100%;
     }
+
+    .button_arrow{
+        display: flex;
+    }
 }
 
 @media only screen and (max-height: 627px) {
@@ -311,5 +359,9 @@ footer p:hover{
 
     .container{
         height: 100%;
+    }
+
+    .button_arrow{
+        display: flex;
     }
 }

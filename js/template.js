@@ -132,3 +132,22 @@ function templateStartScreen() {
     </footer>
   `;
 }
+
+function templateMobileGame() {
+  return `
+    <div id="mobile_buttons">
+      <div id="moveRight" class="button_arrow_right button_arrow">
+        <img src="assets/img/startscreen/arrow.png" alt="" />
+      </div>
+      <div id="moveLeft" class="button_arrow_left button_arrow">
+        <img src="assets/img/startscreen/arrow.png" alt="" />
+      </div>
+      <div id="jump" class="button_arrow_up button_arrow">
+        <img src="assets/img/startscreen/arrow.png" alt="" />
+      </div>
+      <div id="throw" class="button_bottle button_arrow">
+        <img src="assets/img/startscreen/bottle.png" alt="" />
+      </div>
+    </div>
+  `;
+}

@@ -93,6 +93,7 @@ class World{
     gameOver() {
         clearInterval(this.gameInterval);
         document.getElementById('gameOverScreen').classList.remove('dNone');
+        document.getElementById('mobile_buttons').classList.add('dNone');
         this.soundManager.playSound('gameOver'); 
         this.gameRunning = false;
     }
