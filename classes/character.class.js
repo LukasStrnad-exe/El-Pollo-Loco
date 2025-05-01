@@ -2,61 +2,64 @@ class Character extends MovableObject {
     height= 250;
     y = 80;
     speed = 5;
+    world;
 
     IMAGES_IDLE = [
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-1.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-2.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-3.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-4.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-5.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-6.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-7.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-8.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-9.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-10.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-1.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-2.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-3.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-4.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-5.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-6.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-7.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-8.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-9.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-10.png",
     ];
 
     IMAGES_WALKING = [
-        "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-21.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-22.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-23.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-24.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-25.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/2_walk/W-26.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/2_walk/W-21.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/2_walk/W-22.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/2_walk/W-23.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/2_walk/W-24.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/2_walk/W-25.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/2_walk/W-26.png",
     ];
 
     IMAGES_JUMPING = [
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-31.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-32.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-33.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-34.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-35.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-36.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-37.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-38.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/3_jump/J-39.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-31.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-32.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-33.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-34.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-35.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-36.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-37.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-38.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/3_jump/J-39.png",
     ];
 
     IMAGES_DEAD = [
-        "../El-Pollo-Loco/assets/img/2_character_pepe/5_dead/D-51.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/5_dead/D-52.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/5_dead/D-53.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/5_dead/D-54.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/5_dead/D-55.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/5_dead/D-56.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/5_dead/D-57.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/5_dead/D-51.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/5_dead/D-52.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/5_dead/D-53.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/5_dead/D-54.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/5_dead/D-55.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/5_dead/D-56.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/5_dead/D-57.png",
     ];
 
     IMAGES_HURT = [
-        "../El-Pollo-Loco/assets/img/2_character_pepe/4_hurt/H-41.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/4_hurt/H-42.png",
-        "../El-Pollo-Loco/assets/img/2_character_pepe/4_hurt/H-43.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/4_hurt/H-41.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/4_hurt/H-42.png",
+        "../El Pollo Loco/assets/img/2_character_pepe/4_hurt/H-43.png",
     ];
-    world;
 
+/**
+ * The constructor function loads images and applies gravity for character animation.
+ */
     constructor() {
         super();
-        this.loadImage("../El-Pollo-Loco/assets/img/2_character_pepe/1_idle/idle/I-1.png");
+        this.loadImage("../El Pollo Loco/assets/img/2_character_pepe/1_idle/idle/I-1.png");
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
@@ -66,6 +69,10 @@ class Character extends MovableObject {
         this.animate();
     }
 
+/**
+ * The `animate` function in the JavaScript code snippet sets up intervals to handle character movement
+ * and animations based on keyboard input and game state.
+ */
     animate() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -82,7 +89,6 @@ class Character extends MovableObject {
             }
             this.world.camera_x = -this.x + 100;        
         }, 1000 / 60);
-
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
@@ -98,6 +104,16 @@ class Character extends MovableObject {
         }, 1000 / 10);
     }
 
+/**
+ * The function `isAboveEnemy` checks if the current object is positioned above the enemy object and
+ * moving upwards.
+ * @param enemy - The `enemy` parameter in the `isAboveEnemy` function represents an object that has
+ * properties `y` and `height`. These properties are used to determine if the current object is
+ * positioned above the enemy object based on their y-coordinates and heights. The function also checks
+ * if the current object is
+ * @returns The method `isAboveEnemy(enemy)` is returning a boolean value based on the condition
+ * `this.y + this.height < enemy.y + enemy.height && this.speedY < 0`.
+ */
     isAboveEnemy(enemy) {
         return this.y + this.height < enemy.y + enemy.height && this.speedY < 0;
     }

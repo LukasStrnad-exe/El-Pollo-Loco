@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>El Pollo Loco</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png"
+    />
 
     <link rel="stylesheet" href="style.css" />
     <script src="classes/drawable-object.class.js" defer></script>
@@ -31,11 +35,10 @@
     <script src="js/game.js" defer></script>
     <script src="js/template.js" defer></script>
   </head>
-    <body onload="playMusic()">
+  <body onload="playMusic()">
     <h1>El Pollo Loco</h1>
     <div class="container">
       <canvas id="canvas" width="720px" height="480"></canvas>
-      <!-- start startscreen -->
       <div class="startscreen" id="startScreen">
         <div class="startscreen_buttons">
           <div class="home_button" onclick="toggleDnone('gameDescription')">
@@ -49,10 +52,10 @@
           </div>
         </div>
         <div class="muteButton" id="muteButton" onclick="playMusic()">
-          <img src="assets/img/startscreen/mute.png" alt="unmute">
+          <img src="assets/img/startscreen/mute.png" alt="unmute" />
         </div>
         <div class="muteButton dNone" id="unmuteButton" onclick="playMusic()">
-          <img src="assets/img/startscreen/unmute.png" alt="unmute">
+          <img src="assets/img/startscreen/unmute.png" alt="unmute" />
         </div>
         <img
           class="bg_startscreen"
@@ -72,8 +75,6 @@
           </p>
         </footer>
       </div>
-      <!-- end startscreen -->
-      <!-- begin description -->
       <div class="game_description startscreen dNone" id="gameDescription">
         <div class="description">
           <div class="menueFieldClose">
@@ -117,30 +118,19 @@
           alt="game description"
         />
       </div>
-      <!-- end description -->
-      <!-- begin Impressum || begin privacy Policy -->
       <div class="game_description startscreen dNone" id="impressum"></div>
-      <!-- end Impressum || privacy Policy -->
       <div class="game_over dNone" id="gameOverScreen">
         <div class="game_over_buttons">
-          <div onclick="restartGame()" class="restart_button">
-            Restart
-          </div>
-          <div onclick="homeScreen()" class="restart_button">
-            Home
-          </div>
+          <div onclick="restartGame()" class="restart_button">Restart</div>
+          <div onclick="homeScreen()" class="restart_button">Home</div>
         </div>
       </div>
-       <div class="win_game dNone" id="winScreen">
+      <div class="win_game dNone" id="winScreen">
         <div class="game_over_buttons">
-          <div onclick="restartGame()" class="restart_button">
-            Restart
-          </div>
-          <div onclick="homeScreen()" class="restart_button">
-            Home
-          </div>
+          <div onclick="restartGame()" class="restart_button">Restart</div>
+          <div onclick="homeScreen()" class="restart_button">Home</div>
         </div>
-       </div>
+      </div>
     </div>
     <div class="mobile_rotate" id="mobileRotate">
       <img src="assets/img/startscreen/flipPhone.png" alt="rotate" />

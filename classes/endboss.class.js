@@ -4,48 +4,53 @@ class Endboss extends MovableObject {
     hadFirstContact = false;
     attack = false;
     IMAGES_WALKING = [
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/1_walk/G1.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/1_walk/G2.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/1_walk/G3.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/1_walk/G4.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/1_walk/G1.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/1_walk/G2.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/1_walk/G3.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/1_walk/G4.png",
     ];
 
     IMAGES_ALERT = [
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G5.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G6.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G7.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G8.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G9.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G10.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G11.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/2_alert/G12.png",        
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G5.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G6.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G7.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G8.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G9.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G10.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G11.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/2_alert/G12.png",        
     ];
 
     IMAGES_HURT = [
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/4_hurt/G21.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/4_hurt/G22.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/4_hurt/G23.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/4_hurt/G21.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/4_hurt/G22.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/4_hurt/G23.png",
     ];
 
     IMAGES_DEAD = [
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/5_dead/G24.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/5_dead/G25.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/5_dead/G26.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/5_dead/G24.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/5_dead/G25.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/5_dead/G26.png",
     ];
 
     IMAGES_ATTACK = [
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G13.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G14.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G15.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G16.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G17.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G18.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G19.png",
-        "../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/3_attack/G20.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G13.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G14.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G15.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G16.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G17.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G18.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G19.png",
+        "../El Pollo Loco/assets/img/4_enemie_boss_chicken/3_attack/G20.png",
     ];
 
+/**
+ * Creates an instance of the boss enemy.
+ * Initializes the starting image, loads various animation states,
+ * sets the position, starts the animation loop, and sets the movement speed.
+ */
     constructor() { 
-        super().loadImage("../El-Pollo-Loco/assets/img/4_enemie_boss_chicken/1_walk/G1.png");
+        super().loadImage("../El Pollo Loco/assets/img/4_enemie_boss_chicken/1_walk/G1.png");
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_ALERT);
         this.loadImages(this.IMAGES_HURT);
@@ -57,6 +62,12 @@ class Endboss extends MovableObject {
         this.speed = 0;
     }
 
+/**
+ * Controls the boss enemy's animation and movement behavior.
+ * Two intervals are used:
+ *  - One handles animation state switching based on status (dead, hurt, attacking, walking, idle).
+ *  - The other handles movement logic, causing the boss to follow the character.
+ */
     animate() {
         setInterval(() => {
             if (this.isDead()) {
@@ -73,7 +84,6 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.IMAGES_ALERT);
             }
         }, 1000 / 10);
-
         setInterval(() => {
             try {
                 if (world.character.x < this.x) {
@@ -83,16 +93,22 @@ class Endboss extends MovableObject {
                     this.moveRight();
                     this.otherDirection = true;
                 }
-            } catch (error) {
-                
-            }
+            } catch (error) {}
         }, 1000 / 60);
     }
 
+/**
+ * Applies damage to the endboss by reducing its health by 20.
+ * Internally calls the `hit` method to process the damage.
+*/
     endbossHurt(){
         this.hit(20);
     }
 
+/**
+ * Marks that the endboss has made first contact with the player.
+ * Sets the `hadFirstContact` flag to true, possibly triggering a behavior change.
+ */
     endbossFistContact(){
         this.hadFirstContact = true;
     }

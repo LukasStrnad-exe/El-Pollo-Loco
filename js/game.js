@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 musicAreEnabled = true;
-let music = new Audio('../El-Pollo-Loco/assets/audio/background_music.mp3');
+let music = new Audio('../El Pollo Loco/assets/audio/background_music.mp3');
 
 function init() {
     initLevel()
@@ -14,14 +14,27 @@ function init() {
     world.soundManager.soundsAreEnabled = musicAreEnabled;
 }
 
+/**
+ * The function `toggleDnone` toggles the 'dNone' class on the element with the specified id.
+ * @param id - The `id` parameter is a string that represents the id attribute of an HTML element.
+ */
 function toggleDnone(id) {
     document.getElementById(id).classList.toggle('dNone');
 }
 
+/**
+ * The function `renderFooterSides` dynamically renders either an impressum or datenschutz template
+ * based on the provided side parameter.
+ * @param side - The selected footer section to render. Expected values: 'impressum' or 'datenschutz'
+ */
 function renderFooterSides(side) {
     document.getElementById('impressum').innerHTML = side === 'impressum' ? templateImpressum() : templateDatenschutz();
 }
 
+/**
+ * The `restartGame` function resets the game by hiding the game over and win screens, setting the
+ * `world` variable to null, and initializing the game again.
+ */
 function restartGame() {
     document.getElementById('gameOverScreen').classList.add('dNone');
     document.getElementById('winScreen').classList.add('dNone');
@@ -29,6 +42,10 @@ function restartGame() {
     init();
 }
 
+/**
+ * The `homeScreen` function resets the game interface and displays the start screen while also
+ * rendering a music button.
+ */
 function homeScreen() {
     document.getElementById('gameOverScreen').classList.add('dNone');
     document.getElementById('winScreen').classList.add('dNone');
@@ -38,6 +55,10 @@ function homeScreen() {
     renderMusicButton();
 }
 
+/**
+ * The function `playMusic` toggles the music on and off, adjusting volume and looping settings
+ * accordingly.
+ */
 function playMusic() {
     musicAreEnabled === true ? musicAreEnabled = false : musicAreEnabled = true;
     if (musicAreEnabled) {
@@ -50,6 +71,10 @@ function playMusic() {
     renderMusicButton();
 }
 
+/**
+ * The function `renderMusicButton` toggles the visibility of mute and unmute buttons based on the
+ * value of `musicAreEnabled`.
+ */
 function renderMusicButton() {
     if (musicAreEnabled) {
         document.getElementById('unmuteButton').classList.remove('dNone');
@@ -60,6 +85,10 @@ function renderMusicButton() {
     }
 }
 
+/**
+ * The function `activateMobileTouchstartButtons` adds event listeners for touchstart on specific
+ * elements to trigger keyboard actions in a game.
+ */
 function activateMobileTouchstartButtons() {
     document.getElementById('moveLeft').addEventListener('touchstart', (e) => {
         e.preventDefault();
@@ -79,6 +108,10 @@ function activateMobileTouchstartButtons() {
     });
 };
 
+/**
+ * The function `activateMobileTouchendButtons` adds event listeners for touchend events on specific
+ * buttons to update keyboard input values accordingly.
+ */
 function activateMobileTouchendButtons() {
     document.getElementById('moveLeft').addEventListener('touchend', (e) => {
         e.preventDefault();
