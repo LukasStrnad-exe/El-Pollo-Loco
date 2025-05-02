@@ -75,33 +75,49 @@ class Character extends MovableObject {
  */
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.moveRight();
-                this.otherDirection = false;   
-            }
-            if (this.world.keyboard.LEFT && this.x > 0) {
-                this.moveLeft();
-                this.otherDirection = true;
-            }    
-            if (this.world.keyboard.UP && !this.isAboveGround()) {
-                this.jump();
-                this.world.soundManager.playSound('jump'); 
-            }
-            this.world.camera_x = -this.x + 100;        
+            setPosition()
+            this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
         setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-            } else if(this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT);
-            } else if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
-            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                    this.playAnimation(this.IMAGES_WALKING);
-            } else {
-                this.playAnimation(this.IMAGES_IDLE);
-            }
+            setAnimation()
         }, 1000 / 10);
+    }
+
+/**
+ * Updates the character's position based on keyboard input and game world boundaries.
+ * Handles horizontal movement (left/right) and jumping, and plays a sound when jumping.
+ * 
+ * - Moves right if the RIGHT key is pressed and the character hasn't reached the level's end.
+ * - Moves left if the LEFT key is pressed and the character is not at the start.
+ * - Jumps if the UP key is pressed and the character is on the ground.
+ */
+    setPosition(){
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRight();
+            this.otherDirection = false;   
+        }
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeft();
+            this.otherDirection = true;
+        }    
+        if (this.world.keyboard.UP && !this.isAboveGround()) {
+            this.jump();
+            this.world.soundManager.playSound('jump'); 
+        }
+    }
+
+    setAnimation(){
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEAD);
+        } else if(this.isHurt()) {
+            this.playAnimation(this.IMAGES_HURT);
+        } else if (this.isAboveGround()) {
+            this.playAnimation(this.IMAGES_JUMPING);
+        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.playAnimation(this.IMAGES_WALKING);
+        } else {
+            this.playAnimation(this.IMAGES_IDLE);
+        }
     }
 
 /**

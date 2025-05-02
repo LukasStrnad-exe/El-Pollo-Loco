@@ -70,31 +70,58 @@ class Endboss extends MovableObject {
  */
     animate() {
         setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-            } else if(this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT);
-            } else if (this.attack === true) {
-                this.speed = 0;
-                this.playAnimation(this.IMAGES_ATTACK);
-                this.attack = false;
-            } else if(this.speed > 0) {
-                this.playAnimation(this.IMAGES_WALKING);
-            } else {
-                this.playAnimation(this.IMAGES_ALERT);
-            }
+            setAnimation()
         }, 1000 / 10);
         setInterval(() => {
-            try {
-                if (world.character.x < this.x) {
-                    this.moveLeft();
-                    this.otherDirection = false;
-                } else {
-                    this.moveRight();
-                    this.otherDirection = true;
-                }
-            } catch (error) {}
+            setPosition()
         }, 1000 / 60);
+    }
+
+/**
+ * Automatically sets the position of an enemy (e.g. Endboss) relative to the character.
+ * Moves the object toward the character's x-position.
+ * 
+ * - If the character is to the left, the object moves left.
+ * - If the character is to the right, the object moves right.
+ * - Sets the `otherDirection` flag to flip the sprite accordingly.
+ * 
+ * Errors (e.g., undefined `world.character`) are silently caught to prevent crashes.
+ */
+    setPosition(){
+        try {
+            if (world.character.x < this.x) {
+                this.moveLeft();
+                this.otherDirection = false;
+            } else {
+                this.moveRight();
+                this.otherDirection = true;
+            }
+        } catch (error) {}
+    }
+
+/**
+ * Determines and sets the appropriate animation for the character based on its current state.
+ * The animation priority is as follows (from highest to lowest):
+ * - Dead: Plays death animation.
+ * - Hurt: Plays hurt animation.
+ * - Attacking: Plays attack animation and resets the attack flag.
+ * - Moving: Plays walking animation.
+ * - Idle: Plays idle/alert animation.
+ */
+    setAnimation(){
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEAD);
+        } else if(this.isHurt()) {
+            this.playAnimation(this.IMAGES_HURT);
+        } else if (this.attack === true) {
+            this.speed = 0;
+            this.playAnimation(this.IMAGES_ATTACK);
+            this.attack = false;
+        } else if(this.speed > 0) {
+            this.playAnimation(this.IMAGES_WALKING);
+        } else {
+            this.playAnimation(this.IMAGES_ALERT);
+        }
     }
 
 /**
