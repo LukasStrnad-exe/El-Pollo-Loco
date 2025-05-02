@@ -23,7 +23,7 @@ class TinyChicken extends MovableObject {
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
         this.x =200 +  Math.random() * 3500;
-        this.speed = 6 +  Math.random() * 3;
+        this.speed = 2 +  Math.random() * 3;
         this.animate();
     }
 
