@@ -2,6 +2,7 @@ class Character extends MovableObject {
     height= 250;
     y = 80;
     speed = 5;
+    offset = { top: 100, left: 15, right: 20, bottom: 10 };
     world;
 
     IMAGES_IDLE = [
@@ -75,11 +76,11 @@ class Character extends MovableObject {
  */
     animate() {
         setInterval(() => {
-            setPosition()
+            this.setPosition()
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
         setInterval(() => {
-            setAnimation()
+            this.setAnimation()
         }, 1000 / 10);
     }
 

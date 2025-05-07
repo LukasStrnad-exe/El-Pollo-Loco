@@ -1,4 +1,5 @@
 class MovableObject extends DrawableObject{
+    offset = { top: 0, bottom: 0, left: 0, right: 0 };
     speed = 0.2;
     otherDirection = false;
     speedY = 0;
@@ -76,23 +77,32 @@ class MovableObject extends DrawableObject{
         return this.energy === 0;
     }
 
+
 /**
- * Checks whether this object is colliding with another object.
- * The collision is determined based on the bounding box of both objects.
- *
- * @param {Object} obj - The object to check for collision with.
+ * Checks for a collision between this object and another object using axis-aligned bounding boxes (AABB),
+ * adjusted by optional offset margins for more accurate hitboxes.
+ * 
+ * @param {Object} obj - The other object to check for collision.
  * @param {number} obj.x - The x-coordinate of the other object.
  * @param {number} obj.y - The y-coordinate of the other object.
  * @param {number} obj.width - The width of the other object.
  * @param {number} obj.height - The height of the other object.
- * @returns {boolean} True if the objects are colliding; otherwise, false.
+ * @param {Object} obj.offset - The offset for fine-tuning collision detection.
+ * @param {number} obj.offset.top
+ * @param {number} obj.offset.bottom
+ * @param {number} obj.offset.left
+ * @param {number} obj.offset.right
+ * @returns {boolean} True if the bounding boxes (with offsets) intersect, false otherwise.
  */
     isColliding (obj) {
-        return (this.x + this.width) >= obj.x &&
-               this.x <= (obj.x + obj.width) &&
-               (this.y + this.height) >= obj.y &&
-               this.y <= (obj.y + obj.height);
+        return (
+            this.x + this.width - this.offset.right > obj.x + obj.offset.left && 
+            this.x + this.offset.left < obj.x + obj.width - obj.offset.right &&
+            this.y + this.height - this.offset.bottom > obj.y + obj.offset.top && 
+            this.y + this.offset.top < obj.y + obj.height - obj.offset.bottom
+        );
     }
+
 
 /**
  * Moves the object to the right by its speed value.

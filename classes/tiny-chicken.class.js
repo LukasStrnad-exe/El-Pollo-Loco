@@ -2,6 +2,7 @@ class TinyChicken extends MovableObject {
     y = 350;
     height = 90;
     width = 90;
+    offset = { top: 5, left: 5, right: 5, bottom: 5 };
     IMAGES_WALKING = [
         "../El Pollo Loco/assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png",
         "../El Pollo Loco/assets/img/3_enemies_chicken/chicken_small/1_walk/2_w.png",

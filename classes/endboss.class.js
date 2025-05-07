@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
     height = 300;
     hadFirstContact = false;
     attack = false;
+    offset = { top: 50, left: 10, right: 5, bottom: 10 };
     IMAGES_WALKING = [
         "../El Pollo Loco/assets/img/4_enemie_boss_chicken/1_walk/G1.png",
         "../El Pollo Loco/assets/img/4_enemie_boss_chicken/1_walk/G2.png",
@@ -70,10 +71,10 @@ class Endboss extends MovableObject {
  */
     animate() {
         setInterval(() => {
-            setAnimation()
+            this.setAnimation()
         }, 1000 / 10);
         setInterval(() => {
-            setPosition()
+            this.setPosition()
         }, 1000 / 60);
     }
 

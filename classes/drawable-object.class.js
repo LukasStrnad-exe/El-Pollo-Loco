@@ -8,6 +8,7 @@ class DrawableObject {
     currentImage = 0;
 
 
+
 /**
  * The loadImage function creates a new Image object and sets its source to the specified path.
  * @param path - The `path` parameter in the `loadImage` function is a string that represents the file

@@ -1,5 +1,6 @@
 class Bottle extends MovableObject{
     static bottlesCreated = 0;
+    offset = { top: 10, left: 25, right: 15, bottom: 5 };
 
 /**
  * This JavaScript constructor function creates instances of a Bottle class with randomized
